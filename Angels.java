@@ -1,16 +1,35 @@
 public class Angels{
-	public static String[] newAngel(String name, String power, String photo, String prayer, int day, int mounth, String[] candle){
-		String[] result = new String[7];
-		result[0] = name;
-		result[1] = power;
-		result[2] = photo;
-		result[3] = prayer;
-		result[4] = String.valueOf(day);
-		result[5] = String.vañueOf(mounth);
-		result[6] = candle;
-	return result;	
+	private String name;
+	private String power;
+	private  String photo:
+	private String prayer;
+	private int day;
+	private int mounth;
+	private Candle candle;
+
+	public void setName(String name){
+		this.name = name;
 	}
-	public static String newPower(String power){
-		
+	public void setPower(String power){
+		this.power = power;
+	}
+	public void setPhoto(String photo){
+		this.photo = photo;
+	}
+	public void setPrayer(String prayer){
+		this.prayer = prayer;
+	}
+	public void setDay(int day){
+		this.day = day;
+	}
+	public void setMounth(int mounth){
+		this.mounth = mounth;
+	}
+	public Candle getCandle(){
+		return 
+	}
+
+	public static void newAngel(String angel){
+		Angels angel = new Angels();
 	}
 }
