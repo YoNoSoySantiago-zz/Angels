@@ -1,8 +1,17 @@
+package model;
 public class Candle{
 	private String color;
 	private String essence;
 	private double size;
 	private double luminescence;
+
+	//Methods
+	public Candle(String color, String essence, double size, double luminescence){
+		this.color = color;
+		this.essence = essence;
+		this.size = size;
+		this.luminescence = luminescence;
+	}
 
 	public void SetColor(String color){
 		this.color = color;
@@ -28,7 +37,8 @@ public class Candle{
 	public double getLuminescence(){
 		return this.luminescence;
 	}
-	public static void newCandle(){
-		Candle Candle = new Candle();
+	public Candle getCandle(){
+		Candle candle = new Candle();
+		return candle;
 	}
 }
