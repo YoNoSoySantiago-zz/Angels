@@ -6,12 +6,12 @@ public class Angels{
 	private String photo;
 	private String prayer;
 	private int day;
-	private int month;
+	private String month;
     private Candle candle;
 
 // Methods
 	//Constructor
-	public Angels(String name, String power, String photo, String prayer, int day, int month, Candle candle){
+	public Angels(String name, String power, String photo, String prayer, int day, String month, Candle candle){
 		this.name = name;
 		this.power = power;
 		this.photo = photo;
@@ -52,10 +52,10 @@ public class Angels{
 	public int getDay(){
 		return this.day;
 	}
-	public void setMonth(int month){
+	public void setMonth(String month){
 		this.month = month;
 	}
-	public int getMonth(){
+	public String getMonth(){
 		return this.month;
 	}
 	public void setCandle(Candle candle){

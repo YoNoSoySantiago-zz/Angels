@@ -106,7 +106,7 @@ public class Principal{
 
             break;
 			case 2:
-			System.out.println("la cantidad de arcangeles agregados son: "+ legions.calculaNumberAngels());
+			System.out.println("la cantidad de arcangeles agregados son: "+ legions.calculateNumberAngels());
 			break;
 			case 3:
 			System.out.println("indique el nombre del arcangel que desea buscar");
@@ -121,9 +121,12 @@ public class Principal{
 			legions.showInformationName(power);
 			break;
 			case 5:
-			
+			System.out.println("Indique el mes(en numeros del 1 al 12) en el que desea buscar");
+			month = S.nextInt();
+			legions.showDatesMonth(legions.converterToMonth(month));
 			break;
 			case 6:
+			legions.showAllDates();
 			break;
 		}
 		}while(process != 0);
@@ -147,12 +150,10 @@ public class Principal{
 	// valores predeterminados 
 	public void init(){
 		Candle candle = new Candle("Azul","Lavanda",15,0.5);
-		Angels angels = new Angels("Miguel","Curar","miguel.jpg","hola miguelito",23,07,candle );
 		Legion legions = new Legion();
-		legions.add(angels);
+		legions.addAngel("Miguel","Curar","miguel.jpg","hola miguelito",23,"Julio",candle);
 		candle.setColor("Rojo");candle.setEssence("Limon");candle.setSize(21);candle.setLuminescence(0.8);
-		angels.setName("Gabriel");angels.setPower("volar");angels.setPhoto("gabriel.jpg");angels.setPrayer("holi UwU");angels.setDay(12);angels.setMonth(12);angels.setCandle(candle);
-		legions.add(angels);
+		legions.addAngel("Gabriel","volar","gabriel.jpg","holi UwU",12,"Diciembre",candle);
 	}
 }
 

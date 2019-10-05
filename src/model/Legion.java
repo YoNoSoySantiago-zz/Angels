@@ -4,10 +4,13 @@ import java.util.ArrayList;
 public class Legion{
 	private ArrayList<Angels> archangel;
 
-	public void addAngel(String name, String power, String photo, String prayer, int day, int month,Candle candle){
+	public void addAngel(String name, String power, String photo, String prayer, int day, String month,Candle candle){
 		Angels angels = new Angels(name,power,photo,prayer,day,month,candle);
 		archangel.add(angels);
 
+	}
+	public void addCandle(String color, String essence, double size, double luminescence){
+		Candle candle = new Candle(color,essence,size,luminescence);
 	}
 
 	public boolean checkSyllable(String name){
@@ -49,8 +52,8 @@ public class Legion{
 			System.out.println("power: "+ archangel.get(aux).getPower());
 			System.out.println("photo: "+ archangel.get(aux).getPhoto());
 			System.out.println("prayer: "+ archangel.get(aux).getPrayer());
-			System.out.println("day: "+ archangel.get(aux).getDay());
-			System.out.println("month: "+ archangel.get(aux).getMonth());
+			System.out.print("date: "+ archangel.get(aux).getMonth());
+			System.out.println(" "+ archangel.get(aux).getDay());
 			System.out.println("candle color: "+ archangel.get(aux).getCandle().getColor());
 
 		}else{
@@ -70,8 +73,8 @@ public class Legion{
 			System.out.println("power: "+ archangel.get(aux).getPower());
 			System.out.println("photo: "+ archangel.get(aux).getPhoto());
 			System.out.println("prayer: "+ archangel.get(aux).getPrayer());
-			System.out.println("day: "+ archangel.get(aux).getDay());
-			System.out.println("month: "+ archangel.get(aux).getMonth());
+			System.out.print("date : "+ archangel.get(aux).getMonth());
+			System.out.println(" "+ archangel.get(aux).getDay());
 			System.out.println("candle color: "+ archangel.get(aux).getCandle().getColor());
 
 		}else{
@@ -80,7 +83,7 @@ public class Legion{
 	}
 
 	public int calculateNumberAngels(){
-		int result = angels.size();
+		int result = archangel.size();
 		return result;
 	}
 /*
@@ -141,14 +144,91 @@ public class Legion{
 	}
 	public void showDatesMonth(String month){
 		for(int i = 0; i < archangel.size(); i++){
-			if(archangel(i).getMonth().equals(month)){
-				System.out.println("")
+			if(archangel.get(i).getMonth().equals(month)){
+			    System.out.println(archangel.get(i).getName()+": "+archangel.get(i).getDay()+" de "+archangel.get(i).getMonth()+" vela: "+archangel.get(i).getCandle().getColor()+" de "+archangel.get(i).getCandle().getEssence());	
 			}
 		}
 	}
 	public void showAllDates(){
+		for(int i = 0; i < archangel.size(); i++){
+				System.out.println(archangel.get(i).getName()+": "+archangel.get(i).getDay()+" de "+archangel.get(i).getMonth());
+			
+			}
 
-	}	
+	}
+	public String converterToMonth(int month){
+		String result = "";
+		switch(month){
+  case 1:
+    {
+      result="Enero";
+      break;
+    }
+  case 2:
+    {
+      result="Febrero";
+      break;
+    }
+  case 3:
+    {
+      result="Marzo";
+      break;
+    }
+  case 4:
+    {
+      result="Abril";
+      break;
+    }
+  case 5:
+    {
+      result="Mayo";
+      break;
+    }
+  case 6:
+    {
+      result="Junio";
+      break;
+    }
+  case 7:
+    {
+      result="Julio";
+      break;
+    }
+  case 8:
+    {
+      result="Agosto";
+      break;
+    }
+  case 9:
+    {
+      result="Septiembre";
+      break;
+    }
+  case 10:
+    {
+      result="Octubre";
+      break;
+    }
+  case 11:
+    {
+      result="Noviembre";
+      break;
+    }
+  case 12:
+    {
+      result="Diciembre";
+      break;
+    }
+  default:
+    {
+      result="Error";
+      break;
+    }
+}
+return result;
+
+	}
+	
 
 	
 	
