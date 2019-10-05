@@ -1,39 +1,44 @@
 package ui;
 import java.util.Scanner;
 import model.*;
+import java.util.Scanner;
 
 public class Principal{
 	private Scanner S;
-	private Legion legions;
+	private Legion legions = new Legion();
 	private Candle candle;
 	public Principal(){
-		init();
-		S = new Scanner(System.in);
+		
 	}
 
-	public void main(String[] args){
+	public static void main(String[] args){
 		Principal principal = new Principal();
-		int process,day,month,process2;
+		principal.init();
+		Scanner S = new Scanner(System.in);
+		Scanner N = new Scanner(System.in);
+		int process,day=0,month=1,process2;
 		double luminescence,size;
-		String name,power,photo,prayer,color,essencence;
+		String name="",power="",photo="",prayer="",color="",essencence="";
 		boolean result1 = false,result2=false;
 		do{
 		principal.showMenu();
-		process = S.nextInt();
+		process = N.nextInt();
 		switch (process){
 			//Crear Angel
 			case 1:
-			while(result1 && result2){
+			result1 =false;
+			result2=false;
+			while(result1== false || result2 == false){
 				System.out.println("por favor ingrese el nombre del arcangel(recuerde que e nombre debe termianr es 'el' y que los arcangeles Miguel y gabriel ya han sido creados): ");
 			    name = S.nextLine();
-			    result1 = legions.checkSyllable(name);
-			    result2 = legions.checkDifferentName(name);
+			    result1 = principal.legions.checkSyllable(name);
+			    result2 = principal.legions.checkDifferentName(name);
 			    if(result1 == false || result2 == false){
 				System.out.println("este nombre no es valido");
 			}
 		}
 			result2 = false;result1=false;
-			while(result1 && result2){
+			while(result1==false ){
 				 System.out.println("escoja el poder: \n"+
 			    	"1. Sabiduría divina\n"+
 			    	"2. Amor impersonal\n"+
@@ -42,53 +47,55 @@ public class Principal{
 			    	"5. Sanación\n"+
 			    	"6. Crar un poder: \n"+
 			    	"7. Cancelar");
-				 process2 = S.nextInt();
+				 process2 = N.nextInt();
 				if(process2 == 6){
 					power = S.nextLine();
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 				}else if(process != 7){
 				switch (process){
+
 					case 1:
 					power = "Sabiduría divina";
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 					break;
 
 					case 2:
 					power = "Amor impersonal";
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 					break;
 
 					case 3:
 					power = "Transmutación";
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 					break;
 
 					case 4:
 					power = "Cura enfermedades psicosomáticas";
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 					break;
 
 					case 5:
 					power = "Sanación";
-					result1 = legions.newPower(power);
+					result1 = principal.legions.newPower(power);
 					break;
 				}
 			}
-			if(result1 == false || result2 == false){
+			if(result1 == false){
 				System.out.println("este poder no es valido");
 			}
 		}
-	        System.out.println("ingrese el nombre o direccion de la foto del arcangel(ejemplo: arcangel.jpg ó https://www.google.com.eg/url?sa=i&source=images&cd=&ved=2ahUKEwj-xpLv-PvkAhXQxlkKHTVyDC0QjRx6BAgBEAQ&url=https%3A%2F%2Fhermandadblanca.org%2Flos-siete-arcangeles-significado%2F&psig=AOvVaw1a2d-H3y1AQdeROsgocfyh&ust=1570049645919489");
+	        System.out.println("ingrese el nombre o direccion de la foto del arcangel (ejemplo: arcangel.jpg) ");
             photo = S.nextLine();
             System.out.println("ingrese la oracion perteneciente al arcangel");
             prayer = S.nextLine();
+            result1 = false;
             while(result1 == false){
-            System.out.println("ingrese la fecha del arcangel\n"+
+            System.out.println("ingrese la fecha del arcangel (en formato numerico)\n"+
 	                           "Día: ");
-	        day = S.nextInt();
+	        day = N.nextInt();
 	        System.out.println("mes: ");
-            month = S.nextInt();
-	        result1 = legions.verifyDate(day,month);
+            month = N.nextInt();
+	        result1 = principal.legions.verifyDate(day,month);
 	        if(result1 == false){
 		        System.out.println("esta fecha no es valida");
 	    }
@@ -99,34 +106,35 @@ public class Principal{
             System.out.println("2. indique la esencia: ");
             essencence = S.nextLine();
             System.out.println("3. indique el tamaño de la vela en cm");
-            size = S.nextDouble();
+            size = N.nextDouble();
             System.out.println("4. indique el nivel de luminicencia de la vela");
-            luminescence = S.nextDouble();
-            candle.setColor(color);candle.setEssence(essencence);candle.setSize(size);candle.setLuminescence(luminescence);
+            luminescence = N.nextDouble();
+            principal.candle = new Candle(color,essencence,size,luminescence);
+            principal.legions.addAngel(name,power,photo,prayer,day,principal.legions.converterToMonth(month),principal.candle);
 
             break;
 			case 2:
-			System.out.println("la cantidad de arcangeles agregados son: "+ legions.calculateNumberAngels());
+			System.out.println("la cantidad de arcangeles agregados son: "+ principal.legions.calculateNumberAngels());
 			break;
 			case 3:
 			System.out.println("indique el nombre del arcangel que desea buscar");
 			name = S.nextLine();
 			System.out.println("Su arcangel es: ");
-			legions.showInformationName(name);
+			principal.legions.showInformationName(name);
 			break;
 			case 4:
 			System.out.println("indique el poder del arcangel que desea buscar");
 			power = S.nextLine();
 			System.out.println("Su arcangel es: ");
-			legions.showInformationName(power);
+			principal.legions.showInformationPower(power);
 			break;
 			case 5:
 			System.out.println("Indique el mes(en numeros del 1 al 12) en el que desea buscar");
-			month = S.nextInt();
-			legions.showDatesMonth(legions.converterToMonth(month));
+			month = N.nextInt();
+			principal.legions.showDatesMonth(principal.legions.converterToMonth(month));
 			break;
 			case 6:
-			legions.showAllDates();
+			principal.legions.showAllDates();
 			break;
 		}
 		}while(process != 0);
@@ -150,8 +158,7 @@ public class Principal{
 	// valores predeterminados 
 	public void init(){
 		Candle candle = new Candle("Azul","Lavanda",15,0.5);
-		Legion legions = new Legion();
-		legions.addAngel("Miguel","Curar","miguel.jpg","hola miguelito",23,"Julio",candle);
+		legions.addAngel("Miguel","Curar","miguel.jpg","hola miguelito",23,"Julio",new Candle("Azul","Lavanda",15,0.5));
 		candle.setColor("Rojo");candle.setEssence("Limon");candle.setSize(21);candle.setLuminescence(0.8);
 		legions.addAngel("Gabriel","volar","gabriel.jpg","holi UwU",12,"Diciembre",candle);
 	}

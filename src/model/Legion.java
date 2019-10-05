@@ -2,16 +2,25 @@ package model;
 import java.util.ArrayList;
 
 public class Legion{
-	private ArrayList<Angels> archangel;
+	//Atributes
+	private ArrayList<Angels> archangel = new ArrayList<Angels>();
 
+//Mtodos
+	/**
+	<p> desc: <p> Receive attributes for a new archangel, this method allows you to create and add an angel object, to the list of archangels
+	<p> post: <p> You must instantiate the Angels class within the method
+	<p> pre: <p> An ArrayList of Archangels must already be instantiated	
+	@Params *, todos los atributos representan a los atributos correspondientes de la clase Angels
+	*/
 	public void addAngel(String name, String power, String photo, String prayer, int day, String month,Candle candle){
 		Angels angels = new Angels(name,power,photo,prayer,day,month,candle);
 		archangel.add(angels);
 
 	}
-	public void addCandle(String color, String essence, double size, double luminescence){
-		Candle candle = new Candle(color,essence,size,luminescence);
-	}
+	/**
+	<p> desc: <p> Recibe una cadena de caracteres, este metodo permite comprobar si la cadena recibida termina en 'el' o no
+	@Param name, este paramero representa 	
+	*/
 
 	public boolean checkSyllable(String name){
 		boolean result;
@@ -33,7 +42,7 @@ public class Legion{
 	public boolean checkDifferentName(String name){
 		boolean result = true;
 		for(int i = 0; i < archangel.size() && result; i++){
-			if(name.toLowerCase() == archangel.get(i).getName().toLowerCase()){
+			if(archangel.get(i).getName().equalsIgnoreCase(name)){
 				result = false;
 			}
 		}
@@ -43,7 +52,7 @@ public class Legion{
 	public void showInformationName(String name){
 		int aux = -1;
 		for(int i = 0; i < archangel.size() && aux== -1;i++ ){
-			if(name.toLowerCase() == archangel.get(i).getName().toLowerCase() ){
+			if(archangel.get(i).getName().toLowerCase().equalsIgnoreCase(name) ){
 				aux = i;
 			}
 		}
@@ -64,7 +73,7 @@ public class Legion{
 	public void showInformationPower(String power){
 		int aux = -1;
 		for(int i = 0; i < archangel.size();i++ ){
-			if(power.toLowerCase() == archangel.get(i).getPower().toLowerCase() ){
+			if(archangel.get(i).getPower().equalsIgnoreCase(power) ){
 				aux = i;
 			}
 		}
@@ -86,28 +95,6 @@ public class Legion{
 		int result = archangel.size();
 		return result;
 	}
-/*
-	public String verifyNotSimilarPower(Angels a){
-		String msj = "";
-		boolean t = false;
-
-		for(int i = 0; i < archangel.size() && !t;i++){
-			if(archangel.get(i).getPower().equalsIgnoreCase(a.getPower())){
-				t = true;
-				msj = "No se pudo agregar";
-			}
-
-		}
-		if(t == false){
-			msj = "Se agrego el angel";
-			archangel.add(a);
-		}
-
-
-		return msj;
-
-	}
-	**/
 
 	
 	public boolean newPower(String power){
@@ -145,7 +132,7 @@ public class Legion{
 	public void showDatesMonth(String month){
 		for(int i = 0; i < archangel.size(); i++){
 			if(archangel.get(i).getMonth().equals(month)){
-			    System.out.println(archangel.get(i).getName()+": "+archangel.get(i).getDay()+" de "+archangel.get(i).getMonth()+" vela: "+archangel.get(i).getCandle().getColor()+" de "+archangel.get(i).getCandle().getEssence());	
+			    System.out.println(archangel.get(i).getName()+": "+archangel.get(i).getDay()+" de "+archangel.get(i).getMonth()+" \ncolor de vela: "+archangel.get(i).getCandle().getColor()+"\nesencia de: "+archangel.get(i).getCandle().getEssence());	
 			}
 		}
 	}
