@@ -25,41 +25,20 @@ public class Angels{
 	public String getName(){
 		return this.name;
 	}
-	public void setName(String name){
-		this.name = name;
-	}
-	public void setPower(String power){
-		this.power = power;
-	}
 	public String getPower(){
 		return this.power;
-	}
-	public void setPhoto(String photo){
-		this.photo = photo;
 	}
 	public String getPhoto(){
 		return this.photo;
 	}
-	public void setPrayer(String prayer){
-		this.prayer = prayer;
-	}
 	public String getPrayer(){
 		return this.prayer;
-	}
-	public void setDay(int day){
-		this.day = day;
 	}
 	public int getDay(){
 		return this.day;
 	}
-	public void setMonth(String month){
-		this.month = month;
-	}
 	public String getMonth(){
 		return this.month;
-	}
-	public void setCandle(Candle candle){
-		this.candle = candle;
 	}
 	public Candle getCandle(){
 		return this.candle;

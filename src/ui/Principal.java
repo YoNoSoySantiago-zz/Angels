@@ -49,6 +49,7 @@ public class Principal{
 			    	"7. Cancelar");
 				 process2 = N.nextInt();
 				if(process2 == 6){
+					System.out.println("idique el poder que desea Crear");
 					power = S.nextLine();
 					result1 = principal.legions.newPower(power);
 				}else if(process != 7){
@@ -107,7 +108,7 @@ public class Principal{
             essencence = S.nextLine();
             System.out.println("3. indique el tamaño de la vela en cm");
             size = N.nextDouble();
-            System.out.println("4. indique el nivel de luminicencia de la vela");
+            System.out.println("4. indique el nivel de luminicencia de la vela en numeros en porcentaje (pero sin poner el simbolo %");
             luminescence = N.nextDouble();
             principal.candle = new Candle(color,essencence,size,luminescence);
             principal.legions.addAngel(name,power,photo,prayer,day,principal.legions.converterToMonth(month),principal.candle);
@@ -157,10 +158,10 @@ public class Principal{
 	
 	// valores predeterminados 
 	public void init(){
-		Candle candle = new Candle("Azul","Lavanda",15,0.5);
-		legions.addAngel("Miguel","Curar","miguel.jpg","hola miguelito",23,"Julio",new Candle("Azul","Lavanda",15,0.5));
-		candle.setColor("Rojo");candle.setEssence("Limon");candle.setSize(21);candle.setLuminescence(0.8);
-		legions.addAngel("Gabriel","volar","gabriel.jpg","holi UwU",12,"Diciembre",candle);
+		Candle candle = new Candle("Azul","Lavanda",15,40);
+		legions.addAngel("Miguel","protección divina ","miguel.jpg","San Miguel Arcángel, defiéndenos en la lucha. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste sobre él su poder, es nuestra humilde súplica. Y tú, oh Príncipe de la Milicia Celestial, con el poder que Dios te ha conferido, arroja al infierno a Satanás, y a los demás espíritus malignos que vagan por el mundo para la perdición de las almas. Amén. ",29,"Septiembre",candle);
+		candle.setColor("Blanca");candle.setEssence("Limon");candle.setSize(21);candle.setLuminescence(100);
+		legions.addAngel("Gabriel","Enegia","gabriel.jpg","Oh glorioso Arcángel San Gabriel, llamado fortaleza de Dios, príncipe excelentísimo entre los espíritus angélicos, embajador del Altísimo, que mereciste ser escogido para anunciar a la Santísima Virgen la Encarnación de divino Verbo en sus purísimas entrañas: yo te suplico tengas a bien rogar a Dios por mí, miserable pecador, para que conociendo y adorando este inefable misterio, logre gozar el fruto de la divina redención en la gloria celestial. Amén.",27,"Febrero",candle);
 	}
 }
 
