@@ -9,7 +9,7 @@ public class Legion{
 	/**
 	<p> desc: <p> Receive attributes for a new archangel, this method allows you to create and add an angel object, to the list of archangels
 	<p> post: <p> You must instantiate the Angels class within the method
-	<p> pre: <p> An ArrayList of Archangels must already be instantiated	
+	<p> pre: <p> An ArrayList of Angels must already be instantiated	
 	@Params *, todos los atributos representan a los atributos correspondientes de la clase Angels
 	*/
 	public void addAngel(String name, String power, String photo, String prayer, int day, String month,Candle candle){
@@ -19,7 +19,8 @@ public class Legion{
 	}
 	/**
 	<p> desc: <p> Recibe una cadena de caracteres, este metodo permite comprobar si la cadena recibida termina en 'el' o no
-	@Param name, este paramero representa 	
+	@Param name, this parameter represents a character string
+        @Return este este metodo representa un valor de verdad, el cual respresenta si el parametro termina en el o no 	
 	*/
 
 	public boolean checkSyllable(String name){
@@ -38,7 +39,14 @@ public class Legion{
 		return result;
 	}
 
-
+   	/**
+	<p> desc: <p> Receive a string of characters, this method allows you to check if the entered parameter is equal to the attribute
+	name of at least one of the angels in the arrangement of angels
+	<p> pre: <p> An ArrayList of Angels must already be instantiated
+	@Param name, this parameter represents a character string
+	@Return this method returns a true value, which represents whether or not the entered parameter is equal to the name attribute of
+	at least one of the angels in the arrangement of angels
+	*/	
 	public boolean checkDifferentName(String name){
 		boolean result = true;
 		for(int i = 0; i < archangel.size() && result; i++){
@@ -48,7 +56,13 @@ public class Legion{
 		}
 		return result;
 	}
-
+	
+	/**
+	<p> desc: <p> Receive a string of characters, this method displays the list of all the attributes of the entered parameter on the screen
+	pertaining to the Angel class, the parameter must represent the name attribute of the angel class
+	<p> pre: <p> An ArrayList of Angels must already be instantiated
+	@Param name, this parameter represents a character string
+	*/
 	public void showInformationName(String name){
 		int aux = -1;
 		for(int i = 0; i < archangel.size() && aux== -1;i++ ){
@@ -69,7 +83,13 @@ public class Legion{
 			System.out.println("este angel no Existe");
 		}
 	}
-
+	
+	/**
+	<p> desc: <p> Receive a string of characters, this method displays the list of all the attributes of the entered parameter on the screen
+	pertaining to the Angel class, the parameter must represent the power attribute of the angel class
+	<p> pre: <p> An ArrayList of Angels must already be instantiated
+	@Param name, this parameter represents a character string
+	*/
 	public void showInformationPower(String power){
 		int aux = -1;
 		for(int i = 0; i < archangel.size();i++ ){
@@ -91,12 +111,24 @@ public class Legion{
 		}
 	}
 
+	/**
+	<p> desc: <p> This method allows you to calculate the number of Objects within the array of archangels onjetos
+	<p> pre: <p> An ArrayList of Angels must already be instantiated
+  	@Return this method returns a positive integer that represents the number of objects in the array
+	*/
 	public int calculateNumberAngels(){
 		int result = archangel.size();
 		return result;
 	}
 
-	
+	/**
+	<p> desc: <p> receives a string of characters, this method allows you to check if the entered parameter is equal to the attribute
+power of at least one of the angels in the arrangement of angels
+<p> pre: <p> An ArrayList of Angels must already be instantiated
+@Param power, this parameter represents a character string
+@Return this method returns a true value, which represents whether or not the entered parameter is equal to the power attribute of
+at least one of the angels in the arrangement of angels
+	*/ 	
 	public boolean newPower(String power){
 		boolean result = true;
 		for(int i = 0; i < archangel.size() && result == true;i++ ){
@@ -107,6 +139,12 @@ public class Legion{
 		return result;
 		
 		}
+	/**
+	<P> desc: <p> recibe dos numeros enteros, este metodo permite comprobar si una fecha ingresada en formato numerico es valida o no
+	@param day, este parametro es un numero entero
+	@Param month, este parametro es un numero entero
+	@Return este metodo retorna un valor de verda que indica si los valores ingresados representan una fecha valida o no
+	*/ 
 	public boolean verifyDate(int day,int month){
 		boolean result = false;
 		
@@ -129,6 +167,13 @@ public class Legion{
 		}
 		return result;
 	}
+	
+	/**
+	<p> desc <p> Recibe una cadena de caracteres, este metodo permite mostrar por pantalla los atributos name, day, month de la clase Angels y 
+	los atributos color y essence de la clase Candle , siempre y cuando el atributo month de la clase Angels sea igual al parametro 
+	<p> pre: <p> An ArrayList of Angels must already be instantiated
+	@Param month, este parametro es una cadena de Caracteres
+	*/
 	public void showDatesMonth(String month){
 		for(int i = 0; i < archangel.size(); i++){
 			if(archangel.get(i).getMonth().equals(month)){
@@ -143,6 +188,11 @@ public class Legion{
 			}
 
 	}
+	/**
+	<p> desc: <p> Recibe un numero entero, este metodo permite convertir un numero del 1 al 12 en formato de meses del year
+	@Param este parametro representa un numero entero del 1 al 12
+	@Return este metodo retorna una cadena de caracteres la cual representa uno de los 12 meses del year
+	*/
 	public String converterToMonth(int month){
 		String result = "";
 		switch(month){
